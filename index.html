@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashley John — Reader, Writer, Maker of Things</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EAD9;
+    --paper-dim:#E8DFC9;
+    --ink:#20242C;
+    --ink-soft:#343B47;
+    --gold:#B8863B;
+    --rust:#8C4A3B;
+    --cream:#FBF7EF;
+    --text:#2A241E;
+    --text-soft:#5C5548;
+    --line: rgba(42,36,30,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--ink);
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,234,217,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{font-family:'Fraunces',serif; font-size:19px; font-weight:600; letter-spacing:0.2px; text-decoration:none;}
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{text-decoration:none; font-size:14.5px; color:var(--text-soft); transition:color .2s;}
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:640px){ .navlinks{gap:16px;} .navlinks a{font-size:13px;} }
+
+  /* HERO */
+  .hero{padding:96px 0 88px; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  @media (max-width:800px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow-note{
+    font-family:'Fraunces',serif; font-style:italic; font-size:15px;
+    color:var(--rust); margin-bottom:18px; display:inline-block;
+    transform:rotate(-1.2deg);
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 64px);
+    line-height:1.05;
+    letter-spacing:-0.5px;
+  }
+  .hero p.lede{
+    max-width:46ch; margin-top:22px; font-size:17px; color:var(--text-soft);
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 24px; font-size:14.5px; font-weight:500;
+    text-decoration:none; border-radius:2px; transition:all .18s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--cream);}
+  .btn-primary:hover{background:var(--rust);}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+
+  .hero-art{display:flex; justify-content:center;}
+  .shelf-svg{width:100%; max-width:340px; height:auto;}
+
+  /* SPINE SHELF (decorative) built from divs */
+  .spines{display:flex; align-items:flex-end; gap:8px; height:230px;}
+  .spine{
+    border-radius:2px 2px 0 0;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding-bottom:14px;
+    color:var(--cream);
+    font-family:'Fraunces',serif; font-size:13px;
+    writing-mode:vertical-rl;
+    box-shadow: inset -6px 0 10px -8px rgba(0,0,0,.4);
+  }
+
+  section{padding:80px 0;}
+  .divider{height:1px; background:var(--line); border:none; margin:0;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:60px;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr; gap:36px;}}
+  .about h2{font-size:32px; margin-bottom:22px;}
+  .about p{color:var(--text-soft); font-size:16px; max-width:56ch;}
+  .margin-note{
+    border-left:2px solid var(--gold);
+    padding-left:20px;
+  }
+  .margin-note p{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--ink-soft);
+    font-size:16.5px; margin:0 0 14px;
+  }
+  .interest-list{list-style:none; padding:0; margin:20px 0 0; display:flex; flex-wrap:wrap; gap:10px 0;}
+  .interest-list li{
+    font-size:14px; color:var(--text-soft); position:relative; padding-right:14px; margin-right:2px;
+  }
+  .interest-list li:not(:last-child)::after{content:"·"; margin-left:14px; color:var(--gold);}
+
+  /* WORK / SHELF SECTION */
+  .work h2{font-size:32px;}
+  .work > .wrap > p.section-intro{color:var(--text-soft); max-width:52ch; margin-top:10px; font-size:15.5px;}
+  .shelfrow{margin-top:44px; display:flex; flex-direction:column; gap:2px;}
+  details.category{
+    border-bottom:1px solid var(--line);
+  }
+  details.category summary{
+    list-style:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 4px;
+  }
+  details.category summary::-webkit-details-marker{display:none;}
+  .cat-left{display:flex; align-items:baseline; gap:16px;}
+  .cat-tag{
+    font-family:'Fraunces',serif; font-style:italic; font-size:13px; color:var(--gold);
+    min-width:26px;
+  }
+  .cat-title{font-family:'Fraunces',serif; font-size:22px; color:var(--ink);}
+  .cat-count{font-size:13px; color:var(--text-soft);}
+  .chevron{font-size:20px; color:var(--text-soft); transition:transform .25s ease; font-family:'Fraunces',serif;}
+  details[open] .chevron{transform:rotate(45deg);}
+  .cat-body{padding:4px 4px 30px; display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media (max-width:700px){.cat-body{grid-template-columns:1fr;}}
+  .piece{padding-top:14px; border-top:1px solid var(--line);}
+  .piece h4{font-family:'Fraunces',serif; font-size:17px; color:var(--ink); margin-bottom:6px;}
+  .piece p{font-size:14px; color:var(--text-soft); margin:0 0 8px; max-width:42ch;}
+  .piece a{font-size:13px; text-decoration:underline; text-decoration-color:var(--gold); text-underline-offset:3px; color:var(--rust);}
+  .placeholder-flag{
+    font-size:11.5px; color:var(--gold); font-style:italic; display:block; margin-top:4px;
+  }
+
+  /* CURRENTLY READING STRIP */
+  .reading-strip{
+    background:var(--paper-dim);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .reading-strip .wrap{
+    display:flex; align-items:center; gap:24px; padding:26px 32px; flex-wrap:wrap;
+  }
+  .book-block{
+    width:40px; height:58px; background:var(--rust); border-radius:1px 3px 3px 1px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.08);
+    flex-shrink:0;
+  }
+  .reading-strip .label{font-size:12px; text-transform:none; color:var(--text-soft); letter-spacing:0.2px;}
+  .reading-strip .title{font-family:'Fraunces',serif; font-size:17px; color:var(--ink);}
+
+  /* BLOG */
+  .blog h2{font-size:32px;}
+  .postlist{margin-top:36px; border-top:1px solid var(--line);}
+  .postrow{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:22px 0; border-bottom:1px solid var(--line); gap:20px;
+    text-decoration:none;
+  }
+  .postrow:hover .post-title{color:var(--rust);}
+  .post-title{font-family:'Fraunces',serif; font-size:19px; color:var(--ink); transition:color .18s;}
+  .post-meta{font-size:13px; color:var(--text-soft); white-space:nowrap;}
+
+  /* CONNECT / FOOTER */
+  footer{background:var(--ink); color:var(--cream); padding:88px 0 40px;}
+  footer h2{color:var(--cream); font-size:clamp(30px,4vw,46px); max-width:14ch;}
+  .connect-links{display:flex; gap:28px; margin-top:34px; flex-wrap:wrap;}
+  .connect-links a{
+    text-decoration:none; font-size:15px; color:var(--cream);
+    border-bottom:1px solid rgba(251,247,239,0.35); padding-bottom:3px;
+    transition:border-color .2s;
+  }
+  .connect-links a:hover{border-color:var(--gold);}
+  .foot-bottom{
+    margin-top:70px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12.5px; color:rgba(251,247,239,0.5); border-top:1px solid rgba(251,247,239,0.15); padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Ashley John</a>
+    <ul class="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow-note">new chapter, Toronto edition</span>
+      <h1>Reader by habit,<br>writer by instinct,<br>maker behind the scenes.</h1>
+      <p class="lede">I'm Ashley — I build things at the intersection of stories, screens, and the systems that run them. Currently based in Toronto, always mid-book.</p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn btn-primary">See the work</a>
+        <a href="#blog" class="btn btn-ghost">Read the blog</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="spines">
+        <div class="spine" style="background:var(--rust); height:210px; width:34px;">writing</div>
+        <div class="spine" style="background:var(--gold); height:180px; width:34px;">content</div>
+        <div class="spine" style="background:var(--ink-soft); height:230px; width:34px;">design</div>
+        <div class="spine" style="background:var(--rust); height:150px; width:34px;">reading log</div>
+        <div class="spine" style="background:var(--ink); height:195px; width:34px;">marketing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2>A bit of everything, on purpose.</h2>
+      <p>I studied IT Innovation &amp; Design at Conestoga College, spent the last two years learning how to keep calm under pressure behind a Tim Hortons counter, and spent every spare hour building a reading community online. I'm now settling into Toronto and figuring out how those three things — technical training, service-industry patience, and a genuine love of stories and content — turn into a career.</p>
+      <p>I'm drawn to the parts of media that happen off-camera: the caption that took four drafts, the edit that makes a video actually land, the little UX decision that makes an app feel right. That's the work I want to keep doing.</p>
+      <ul class="interest-list">
+        <li>Reading &amp; book content</li>
+        <li>Writing</li>
+        <li>Social media strategy</li>
+        <li>Video production</li>
+        <li>UX &amp; design</li>
+        <li>Marketing</li>
+      </ul>
+    </div>
+    <div class="margin-note">
+      <p>"Started this account to talk about books. Ended up learning marketing, editing, and how to actually finish things."</p>
+      <p style="font-size:14px; color:var(--text-soft); font-style:normal;">— from my Notes app, sometime this year</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="reading-strip">
+  <div class="wrap">
+    <div class="book-block"></div>
+    <div>
+      <div class="label">currently reading</div>
+      <div class="title">Add your current book title here</div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <h2>The shelf</h2>
+    <p class="section-intro">A working shelf of what I've made — writing, content, and design/IT projects. Replace the placeholders below with your actual pieces and links.</p>
+
+    <div class="shelfrow">
+      <details class="category" open>
+        <summary>
+          <div class="cat-left">
+            <span class="cat-tag">01</span>
+            <span class="cat-title">Writing</span>
+            <span class="cat-count">samples</span>
+          </div>
+          <span class="chevron">+</span>
+        </summary>
+        <div class="cat-body">
+          <div class="piece">
+            <h4>Essay or article title</h4>
+            <p>One line on what it's about and where it was published or posted.</p>
+            <a href="#">Read it →</a>
+            <span class="placeholder-flag">Replace with a real writing sample</span>
+          </div>
+          <div class="piece">
+            <h4>Second writing sample</h4>
+            <p>Could be a book review, a personal essay, or a caption series you're proud of.</p>
+            <a href="#">Read it →</a>
+            <span class="placeholder-flag">Replace with a real writing sample</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="category">
+        <summary>
+          <div class="cat-left">
+            <span class="cat-tag">02</span>
+            <span class="cat-title">Content &amp; Social</span>
+            <span class="cat-count">reels, posts, edits</span>
+          </div>
+          <span class="chevron">+</span>
+        </summary>
+        <div class="cat-body">
+          <div class="piece">
+            <h4>Reel or post title</h4>
+            <p>What it was for, the hook you used, and how it performed.</p>
+            <a href="#">View post →</a>
+            <span class="placeholder-flag">Swap in a screenshot + link</span>
+          </div>
+          <div class="piece">
+            <h4>Behind-the-scenes project</h4>
+            <p>A video you helped edit or produce — describe your specific role.</p>
+            <a href="#">Watch →</a>
+            <span class="placeholder-flag">Swap in a screenshot + link</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="category">
+        <summary>
+          <div class="cat-left">
+            <span class="cat-tag">03</span>
+            <span class="cat-title">Design &amp; IT</span>
+            <span class="cat-count">Conestoga projects</span>
+          </div>
+          <span class="chevron">+</span>
+        </summary>
+        <div class="cat-body">
+          <div class="piece">
+            <h4>Capstone or coursework project</h4>
+            <p>What the project solved, tools used, and your specific contribution.</p>
+            <a href="#">View project →</a>
+            <span class="placeholder-flag">Pull this from your Conestoga coursework</span>
+          </div>
+          <div class="piece">
+            <h4>Second project</h4>
+            <p>An app, prototype, or design exercise from your diploma.</p>
+            <a href="#">View project →</a>
+            <span class="placeholder-flag">Pull this from your Conestoga coursework</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="blog" id="blog">
+  <div class="wrap">
+    <h2>From the margins</h2>
+    <p class="section-intro" style="color:var(--text-soft); max-width:52ch; margin-top:10px; font-size:15.5px;">Notes on books, content, and building a life in a new city. Add your posts here as you write them.</p>
+    <div class="postlist">
+      <a class="postrow" href="#">
+        <span class="post-title">Your first blog post title goes here</span>
+        <span class="post-meta">Draft</span>
+      </a>
+      <a class="postrow" href="#">
+        <span class="post-title">A second post idea, maybe about the move to Toronto</span>
+        <span class="post-meta">Draft</span>
+      </a>
+      <a class="postrow" href="#">
+        <span class="post-title">Something you learned growing an audience to 5k</span>
+        <span class="post-meta">Draft</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="connect">
+  <div class="wrap">
+    <h2>Let's talk shop.</h2>
+    <p style="max-width:44ch; color:rgba(251,247,239,0.75); margin-top:16px;">Open to full-time roles in social, content, or marketing — and always happy to talk books. Reach out any of these ways.</p>
+    <div class="connect-links">
+      <a href="mailto:your.email@example.com">your.email@example.com</a>
+      <a href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener">Instagram — @ashleyjohn</a>
+      <a href="https://tiktok.com/@ashleyjohn" target="_blank" rel="noopener">TikTok — @ashleyjohn</a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Ashley John. Built in Toronto.</span>
+      <span>Update the handles and email above with your real links.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
