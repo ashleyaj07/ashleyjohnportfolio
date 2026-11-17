@@ -199,7 +199,7 @@
   }
 
   /* =====================================================
-     WELCOME POSTCARD POPUP
+     WELCOME POSTCARD LANDING PAGE
      Swap these four colours to restyle the whole popup.
      ===================================================== */
   .welcome{
@@ -207,11 +207,10 @@
     --pc-edge:#DCE230;      /* outer frame */
     --pc-accent:#DCE230;    /* dots, lines, stamps, button */
     --pc-text:#E8EC8A;      /* text on the card */
-    position:fixed; inset:0; z-index:100;
-    display:grid; place-items:center; padding:20px; overflow-y:auto;
+    position:relative; min-height:100vh; min-height:100svh;
+    display:grid; place-items:center; padding:48px 20px;
     background:repeating-linear-gradient(90deg, rgba(27,33,71,.94) 0 14px, rgba(45,61,158,.94) 14px 28px);
   }
-  .welcome[hidden]{display:none;}
   .postcard{
     width:min(760px,100%); padding:12px; background:var(--pc-edge);
     box-shadow:0 18px 40px rgba(0,0,0,.4);
@@ -233,6 +232,7 @@
   .pc-message p{margin:0; font-size:.95rem; line-height:1.55; color:var(--pc-text); max-width:36ch;}
   .pc-enter{
     margin-top:auto; align-self:flex-start;
+    display:inline-block; text-decoration:none; text-align:center;
     font:500 1rem 'Inter',sans-serif;
     background:var(--pc-accent); color:var(--pc-card);
     border:0; border-radius:999px; padding:14px 28px; cursor:pointer;
@@ -265,6 +265,7 @@
     .pc-right{padding-left:22px;}
   }
   @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
     .postcard{animation:none; transform:none;}
     .pc-enter{transition:none;}
   }
@@ -272,9 +273,48 @@
 </head>
 <body>
 
+<!-- ============ LANDING PAGE ============ -->
+<section class="welcome" id="top" aria-labelledby="welcome-title">
+  <div class="postcard">
+    <div class="postcard-inner">
+
+      <div class="pc-message">
+        <h2 id="welcome-title">Welcome to my corner of the internet</h2>
+        <p>Hi, I'm Ashley. This is my portfolio: writing, content, and design work, plus a blog about books and starting over in Toronto. Take a look around.</p>
+        <a class="pc-enter" href="#home">Enter the site</a>
+      </div>
+
+      <div class="pc-right">
+        <div class="pc-stamps" aria-hidden="true">
+          <div class="pc-ticket">AJ</div>
+          <svg class="pc-round" viewBox="0 0 120 120">
+            <defs><path id="pc-ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+            <circle cx="60" cy="60" r="56" fill="none" stroke="#DCE230" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="31" fill="none" stroke="#DCE230" stroke-width="1.5"/>
+            <text font-family="Inter, sans-serif" font-size="11" font-weight="500" letter-spacing="1.4" fill="#DCE230">
+              <textPath href="#pc-ring">MADE WITH LOVE · ASHLEY JOHN · TORONTO ·</textPath>
+            </text>
+            <text x="60" y="72" text-anchor="middle" font-family="Fraunces, serif" font-size="34" font-weight="500" fill="#DCE230">A</text>
+          </svg>
+        </div>
+        <div class="pc-address">
+          <ul>
+            <li>The shelf: my work</li>
+            <li>About me</li>
+            <li>From the margins: my blog</li>
+          </ul>
+          <span class="pc-sign">Happy reading.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <nav>
   <div class="wrap">
-    <a href="#top" class="brand">Ashley John</a>
+    <a href="#home" class="brand">Ashley John</a>
     <ul class="navlinks">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
@@ -284,8 +324,7 @@
   </div>
 </nav>
 
-<div id="top"></div>
-<section class="hero">
+<section class="hero" id="home">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow-note">new chapter, Toronto edition</span>
@@ -467,62 +506,5 @@
   </div>
 </footer>
 
-<!-- ============ WELCOME POSTCARD POPUP ============ -->
-<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
-  <div class="postcard">
-    <div class="postcard-inner">
-
-      <div class="pc-message">
-        <h2 id="welcome-title">Welcome to my corner of the internet</h2>
-        <p>Hi, I'm Ashley. This is my portfolio: writing, content, and design work, plus a blog about books and starting over in Toronto. Take a look around.</p>
-        <button class="pc-enter" id="pc-enter" type="button">Enter the site</button>
-      </div>
-
-      <div class="pc-right">
-        <div class="pc-stamps" aria-hidden="true">
-          <div class="pc-ticket">AJ</div>
-          <svg class="pc-round" viewBox="0 0 120 120">
-            <defs><path id="pc-ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-            <circle cx="60" cy="60" r="56" fill="none" stroke="#DCE230" stroke-width="2.5"/>
-            <circle cx="60" cy="60" r="31" fill="none" stroke="#DCE230" stroke-width="1.5"/>
-            <text font-family="Inter, sans-serif" font-size="11" font-weight="500" letter-spacing="1.4" fill="#DCE230">
-              <textPath href="#pc-ring">MADE WITH LOVE · ASHLEY JOHN · TORONTO ·</textPath>
-            </text>
-            <text x="60" y="72" text-anchor="middle" font-family="Fraunces, serif" font-size="34" font-weight="500" fill="#DCE230">A</text>
-          </svg>
-        </div>
-        <div class="pc-address">
-          <ul>
-            <li>The shelf: my work</li>
-            <li>About me</li>
-            <li>From the margins: my blog</li>
-          </ul>
-          <span class="pc-sign">Happy reading.</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script>
-  const welcome = document.getElementById('welcome');
-  const pcEnter = document.getElementById('pc-enter');
-
-  // Shows once per browser session. Delete the next line to show it on every visit.
-  try { if (sessionStorage.getItem('welcomed')) welcome.hidden = true; } catch (e) {}
-
-  function closeWelcome(){
-    welcome.hidden = true;
-    document.body.style.overflow = '';
-    try { sessionStorage.setItem('welcomed', '1'); } catch (e) {}
-  }
-  if (!welcome.hidden){
-    document.body.style.overflow = 'hidden';
-    pcEnter.focus();
-  }
-  pcEnter.addEventListener('click', closeWelcome);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !welcome.hidden) closeWelcome(); });
-</script>
 </body>
 </html>
