@@ -6,505 +6,207 @@
 <title>Ashley John — Reader, Writer, Maker of Things</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#F4F5E3;        /* page background: pale chartreuse-tinted cream */
-    --paper-dim:#E7EACB;
-    --ink:#1B2147;          /* navy */
-    --ink-soft:#2E3566;
-    --gold:#6F7405;         /* deep chartreuse, safe for small text */
-    --rust:#2D3D9E;         /* royal navy accent (links, hovers) */
-    --chartreuse:#DCE230;   /* bright chartreuse */
-    --cream:#FBFCEF;
-    --text:#1D2033;
-    --text-soft:#4B5068;
-    --line: rgba(27,33,71,0.16);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3, .serif{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    color:var(--ink);
-    margin:0;
-  }
-  a{color:inherit;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){.wrap{padding:0 20px;}}
+  :root{--paper:#FFFDF6;--ink:#1B2147;--ink-soft:#2E3566;--chartreuse:#DCE230;--olive:#6F7405;--pink:#F7C1CF;--yellow:#FBEE9C;--sky:#BFE3EC;--lime:#DDE79B;--cream:#FBFCEF;--text:#1D2033;--text-soft:#4B5068;--line:rgba(27,33,71,.16);--serif:'Fraunces',serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace;--bubble:'Bagel Fat One',cursive}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0}
+  a{color:inherit}section[id]{scroll-margin-top:64px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}@media(max-width:640px){.wrap{padding:0 20px}}
 
   /* NAV */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(244,245,227,0.92);
-    backdrop-filter: blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:64px;
-  }
-  .brand{font-family:'Fraunces',serif; font-size:19px; font-weight:600; letter-spacing:0.2px; text-decoration:none;}
-  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
-  .navlinks a{text-decoration:none; font-size:14.5px; color:var(--text-soft); transition:color .2s;}
-  .navlinks a:hover{color:var(--ink);}
-  @media (max-width:640px){ .navlinks{gap:16px;} .navlinks a{font-size:13px;} }
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,253,246,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{font:400 24px var(--bubble);color:var(--ink);text-decoration:none}
+  .navlinks{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0}
+  .navlinks a:not(.pill){font:11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+  .navlinks a:not(.pill):hover{text-decoration:underline;text-underline-offset:4px}
+  .pill{display:inline-block;padding:10px 20px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;font:500 13px var(--sans);text-decoration:none;color:var(--ink);transition:background .15s,transform .15s}
+  .pill:hover{background:var(--chartreuse);transform:translateY(-2px)}.pill.dark{background:var(--ink);color:var(--chartreuse)}.pill.dark:hover{background:var(--chartreuse);color:var(--ink)}
+  @media(max-width:640px){.navlinks{gap:14px}.navlinks .hide-sm{display:none}}
 
   /* HERO */
-  .hero{padding:96px 0 88px; position:relative; overflow:hidden;}
-  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
-  @media (max-width:800px){ .hero-grid{grid-template-columns:1fr;} }
-  .eyebrow-note{
-    font-family:'Fraunces',serif; font-style:italic; font-size:15px;
-    color:var(--rust); margin-bottom:18px; display:inline-block;
-    transform:rotate(-1.2deg);
-  }
-  .hero h1{
-    font-size:clamp(38px, 5.4vw, 64px);
-    line-height:1.05;
-    letter-spacing:-0.5px;
-  }
-  .hero p.lede{
-    max-width:46ch; margin-top:22px; font-size:17px; color:var(--text-soft);
-  }
-  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
-  .btn{
-    display:inline-block; padding:13px 24px; font-size:14.5px; font-weight:500;
-    text-decoration:none; border-radius:2px; transition:all .18s ease;
-  }
-  .btn-primary{background:var(--ink); color:var(--cream);}
-  .btn-primary:hover{background:var(--chartreuse); color:var(--ink);}
-  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
-  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+  .hero{position:relative;overflow:hidden;padding:64px 0 0;text-align:center;background:linear-gradient(180deg,#C9E7EE,#E3F1EB 55%,var(--paper))}
+  .hero-in{position:relative;max-width:980px;margin:0 auto;padding:0 20px}
+  .tag{display:inline-block;transform:rotate(-3deg);background:var(--pink);border:1.5px solid var(--ink);font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;box-shadow:3px 3px 0 var(--ink)}
+  .wm{font-size:clamp(58px,13vw,168px);line-height:.95;letter-spacing:-.03em;margin:24px 0 0;color:var(--ink)}
+  .wm span{display:inline-block}
+  .ls{font-family:var(--serif);font-weight:800}.lb{font-family:var(--bubble);font-weight:400}
+  .o{-webkit-text-stroke:.05em var(--ink);paint-order:stroke fill}
+  .cc{color:var(--chartreuse)}.cy{color:var(--yellow)}.cs{color:var(--sky)}.cp{color:var(--pink)}.cw{color:#fff}
+  .t1{transform:rotate(-5deg)}.t2{transform:rotate(5deg)}.t3{transform:rotate(-3deg) translateY(.03em)}
+  .hero-sub{font:italic 500 clamp(19px,2.6vw,26px)/1.3 var(--serif);color:var(--ink);margin:22px auto 0;max-width:30ch}
+  .lede{max-width:46ch;margin:14px auto 0;font-size:15px;color:var(--text-soft)}
+  .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .stickers{display:flex;justify-content:center;align-items:flex-end;gap:clamp(2px,1.6vw,20px);margin-top:38px;line-height:1}
+  .stickers span{font-size:clamp(44px,9vw,108px);transform:rotate(var(--r));filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 5px 6px rgba(27,33,71,.25))}
+  .deco{position:absolute;pointer-events:none}.star{width:clamp(34px,5vw,58px)}.s1{left:1%;top:34%;transform:rotate(-14deg)}.s2{right:4%;top:6%;width:26px}
+  .bub{right:5%;top:27%;background:#fff;border:1.5px solid var(--ink);border-radius:14px;padding:3px 12px;font-size:18px;letter-spacing:2px;transform:rotate(6deg)}
+  .cur{right:12%;top:60%;width:32px}.s1,.bub{animation:bob 4s ease-in-out infinite}@keyframes bob{50%{translate:0 -9px}}
+  @media(max-width:700px){.s1,.cur{display:none}}
 
-  .hero-art{display:flex; justify-content:center;}
-  .shelf-svg{width:100%; max-width:340px; height:auto;}
-
-  /* SPINE SHELF (decorative) built from divs */
-  .spines{display:flex; align-items:flex-end; gap:8px; height:230px;}
-  .spine{
-    border-radius:2px 2px 0 0;
-    display:flex; align-items:flex-end; justify-content:center;
-    padding-bottom:14px;
-    color:var(--cream);
-    font-family:'Fraunces',serif; font-size:13px;
-    writing-mode:vertical-rl;
-    box-shadow: inset -6px 0 10px -8px rgba(0,0,0,.4);
-  }
-
-  section{padding:80px 0;}
-  .divider{height:1px; background:var(--line); border:none; margin:0;}
+  /* TICKERS */
+  .marquee{background:#F3EEDC;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);overflow:hidden;white-space:nowrap;padding:12px 0;font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  .mq{display:inline-flex;animation:scroll 32s linear infinite}.mq span{padding-right:28px}.mq span::after{content:"✦";margin-left:28px;color:var(--olive)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
 
   /* ABOUT */
-  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:60px;}
-  @media (max-width:800px){.about-grid{grid-template-columns:1fr; gap:36px;}}
-  .about h2{font-size:32px; margin-bottom:22px;}
-  .about p{color:var(--text-soft); font-size:16px; max-width:56ch;}
-  .margin-note{
-    border-left:3px solid var(--chartreuse);
-    padding-left:20px;
-  }
-  .margin-note p{
-    font-family:'Fraunces',serif; font-style:italic; color:var(--ink-soft);
-    font-size:16.5px; margin:0 0 14px;
-  }
-  .interest-list{list-style:none; padding:0; margin:20px 0 0; display:flex; flex-wrap:wrap; gap:10px 0;}
-  .interest-list li{
-    font-size:14px; color:var(--text-soft); position:relative; padding-right:14px; margin-right:2px;
-  }
-  .interest-list li:not(:last-child)::after{content:"·"; margin-left:14px; color:var(--gold);}
+  .about{position:relative;padding:90px 0 70px}
+  .about h2{font-size:clamp(38px,6.5vw,72px);line-height:1.02;letter-spacing:-.02em;text-align:center;max-width:14ch;margin:0 auto 52px;font-weight:400}
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}@media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .about p{color:var(--text-soft);font-size:16px;max-width:58ch;margin:0 0 16px}
+  .chips{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+  .chips li{padding:7px 15px;border:1.5px solid var(--ink);border-radius:999px;font-size:13.5px;color:var(--ink);background:var(--pink)}
+  .chips li:nth-child(4n+2){background:var(--yellow)}.chips li:nth-child(4n+3){background:var(--sky)}.chips li:nth-child(4n){background:var(--lime)}
+  .note{position:relative;background:var(--yellow);padding:34px 26px 26px;transform:rotate(2deg);box-shadow:6px 8px 0 rgba(27,33,71,.14)}
+  .note::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:24px;margin-left:-45px;background:rgba(247,193,207,.85);transform:rotate(-3deg)}
+  .note p{font:italic 500 19px/1.4 var(--serif);color:var(--ink);margin:0 0 14px}.note small{font:12px var(--mono);color:var(--text-soft)}
+  .tile{position:absolute;width:44px;height:44px;display:grid;place-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:6px;font:700 22px var(--sans);color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+  .env{position:absolute;font-size:44px}@media(max-width:800px){.tile,.env{display:none}}
+  .reading{padding:0 20px 80px}
+  .rp{display:flex;align-items:center;gap:16px;max-width:520px;margin:0 auto;background:var(--chartreuse);border:1.5px solid var(--ink);border-radius:999px;padding:14px 28px;box-shadow:0 5px 0 var(--ink)}
+  .rp small{display:block;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}.rp b{font:500 18px var(--serif);color:var(--ink)}.rp span{font-size:28px}
 
-  /* WORK / SHELF SECTION */
-  .work h2{font-size:32px;}
-  .work > .wrap > p.section-intro{color:var(--text-soft); max-width:52ch; margin-top:10px; font-size:15.5px;}
-  .shelfrow{margin-top:44px; display:flex; flex-direction:column; gap:2px;}
-  details.category{
-    border-bottom:1px solid var(--line);
-  }
-  details.category summary{
-    list-style:none; cursor:pointer;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 4px;
-  }
-  details.category summary::-webkit-details-marker{display:none;}
-  .cat-left{display:flex; align-items:baseline; gap:16px;}
-  .cat-tag{
-    font-family:'Fraunces',serif; font-style:italic; font-size:13px; color:var(--gold);
-    min-width:26px;
-  }
-  .cat-title{font-family:'Fraunces',serif; font-size:22px; color:var(--ink);}
-  .cat-count{font-size:13px; color:var(--text-soft);}
-  .chevron{font-size:20px; color:var(--text-soft); transition:transform .25s ease; font-family:'Fraunces',serif;}
-  details[open] .chevron{transform:rotate(45deg);}
-  .cat-body{padding:4px 4px 30px; display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
-  @media (max-width:700px){.cat-body{grid-template-columns:1fr;}}
-  .piece{padding-top:14px; border-top:1px solid var(--line);}
-  .piece h4{font-family:'Fraunces',serif; font-size:17px; color:var(--ink); margin-bottom:6px;}
-  .piece p{font-size:14px; color:var(--text-soft); margin:0 0 8px; max-width:42ch;}
-  .piece a{font-size:13px; text-decoration:underline; text-decoration-color:var(--chartreuse); text-underline-offset:3px; color:var(--rust);}
-  .placeholder-flag{
-    font-size:11.5px; color:var(--gold); font-style:italic; display:block; margin-top:4px;
-  }
-
-  /* CURRENTLY READING STRIP */
-  .reading-strip{
-    background:var(--chartreuse);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .reading-strip .wrap{
-    display:flex; align-items:center; gap:24px; padding:26px 32px; flex-wrap:wrap;
-  }
-  .book-block{
-    width:40px; height:58px; background:var(--ink); border-radius:1px 3px 3px 1px;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.08);
-    flex-shrink:0;
-  }
-  .reading-strip .label{font-size:12px; text-transform:none; color:var(--text-soft); letter-spacing:0.2px;}
-  .reading-strip .title{font-family:'Fraunces',serif; font-size:17px; color:var(--ink);}
+  /* WORK */
+  .work{padding:80px 0 70px;text-align:center;background-color:var(--paper);background-image:linear-gradient(rgba(27,33,71,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,33,71,.06) 1px,transparent 1px);background-size:28px 28px;border-top:1.5px solid var(--line)}
+  .work h2{font:700 clamp(24px,3.4vw,34px)/1.15 var(--sans);letter-spacing:-.02em}
+  .sub{max-width:52ch;margin:10px auto 0;color:var(--text-soft);font-size:15px}
+  .rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:40px;padding:6px max(20px,calc((100vw - 1120px)/2 + 32px)) 20px;scrollbar-width:none;text-align:left}.rail::-webkit-scrollbar{display:none}
+  .wc{flex:0 0 min(290px,80vw);scroll-snap-align:start;border-radius:20px;padding:22px;display:flex;flex-direction:column;min-height:300px}
+  .pk{background:var(--pink)}.sk{background:var(--sky)}.yl{background:var(--yellow)}.lm{background:var(--lime)}
+  .wc small{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .wc h3{font:700 21px/1.2 var(--sans);letter-spacing:-.02em;margin:10px 0 12px;padding-bottom:12px;border-bottom:1px solid rgba(27,33,71,.25)}
+  .wc p{font-size:13.5px;color:var(--ink-soft);margin:0 0 10px}.wc em{font-size:11.5px;color:var(--ink-soft);opacity:.8}
+  .wc a{margin-top:auto;align-self:flex-start;background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:7px 16px;font-size:12.5px;font-weight:500;text-decoration:none}.wc a:hover{background:var(--chartreuse)}
+  .arrows{display:flex;gap:10px;justify-content:center;margin-top:10px}
+  .arrows button{width:48px;height:38px;border:1.5px solid var(--ink);background:#fff;border-radius:999px;font-size:18px;cursor:pointer;color:var(--ink)}.arrows button:hover{background:var(--chartreuse)}
 
   /* BLOG */
-  .blog h2{font-size:32px;}
-  .postlist{margin-top:36px; border-top:1px solid var(--line);}
-  .postrow{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:22px 0; border-bottom:1px solid var(--line); gap:20px;
-    text-decoration:none;
-  }
-  .postrow:hover .post-title{color:var(--rust);}
-  .post-title{font-family:'Fraunces',serif; font-size:19px; color:var(--ink); transition:color .18s;}
-  .post-meta{font-size:13px; color:var(--text-soft); white-space:nowrap;}
+  .blog{padding:90px 0}.blog h2{font-size:clamp(34px,5vw,56px);text-align:center;letter-spacing:-.02em;font-weight:400}.blog .sub{text-align:center}
+  .posts{display:grid;gap:12px;margin:36px auto 0;max-width:760px}
+  .post{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-radius:18px;text-decoration:none;background:var(--pink);transition:transform .15s}
+  .post:nth-child(2){background:var(--sky)}.post:nth-child(3){background:var(--lime)}.post:hover{transform:translateY(-3px) rotate(-.4deg)}
+  .post b{font:500 20px var(--serif);color:var(--ink)}.post i{font:normal 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px;white-space:nowrap}
 
-  /* CONNECT / FOOTER */
-  footer{background:var(--ink); color:var(--cream); padding:88px 0 40px;}
-  footer h2{color:var(--cream); font-size:clamp(30px,4vw,46px); max-width:14ch;}
-  .connect-links{display:flex; gap:28px; margin-top:34px; flex-wrap:wrap;}
-  .connect-links a{
-    text-decoration:none; font-size:15px; color:var(--cream);
-    border-bottom:1px solid rgba(251,247,239,0.35); padding-bottom:3px;
-    transition:border-color .2s;
-  }
-  .connect-links a:hover{border-color:var(--chartreuse);}
-  .foot-bottom{
-    margin-top:70px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:12.5px; color:rgba(251,247,239,0.5); border-top:1px solid rgba(251,247,239,0.15); padding-top:22px;
-  }
+  /* FOOTER */
+  footer{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);padding:80px 0 34px}
+  footer h2{color:var(--cream);font-size:clamp(34px,5vw,60px);font-weight:400;letter-spacing:-.02em}
+  .talk p{max-width:44ch;color:rgba(251,252,239,.75);margin:14px 0 0}
+  .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .links a{text-decoration:none;border:1.5px solid var(--chartreuse);color:var(--chartreuse);border-radius:999px;padding:10px 18px;font-size:14px}.links a:hover{background:var(--chartreuse);color:var(--ink)}
+  .reels{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:56px 0 34px}@media(max-width:700px){.reels{grid-template-columns:repeat(3,1fr)}}
+  .reel{aspect-ratio:3/4;border-radius:12px;display:flex;flex-direction:column;justify-content:space-between;padding:12px;text-decoration:none;color:var(--ink);font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+  .reel span{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:12px}
+  .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}@media(max-width:700px){.cols{grid-template-columns:1fr 1fr}.cols>div:first-child{grid-column:1/-1}}
+  .cols h4{font:500 15px var(--sans);margin:0 0 10px}.cols a{display:block;font:12px/2 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:rgba(251,252,239,.8)}.cols a:hover{color:var(--chartreuse)}
+  .cols p{margin:0;max-width:30ch;font:19px var(--serif)}
+  .fm{font-size:clamp(52px,12.5vw,168px);line-height:1;letter-spacing:-.03em;margin:48px 0 20px;text-align:center}
+  .fm span{display:inline-block}.fm .ls{color:var(--cream)}.fm .o{-webkit-text-stroke-color:var(--chartreuse)}
+  .fcur{right:6%;bottom:64px;width:44px}
+  .legal{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(251,252,239,.5);border-top:1px solid rgba(251,252,239,.15);padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq,.s1,.bub{animation:none}}
 
-  /* =====================================================
-     WELCOME POSTCARD LANDING PAGE
-     Swap these four colours to restyle the whole popup.
-     ===================================================== */
-  .welcome{
-    --pc-card:#1B2147;      /* postcard paper */
-    --pc-edge:#DCE230;      /* outer frame */
-    --pc-accent:#DCE230;    /* dots, lines, stamps, button */
-    --pc-text:#E8EC8A;      /* text on the card */
-    position:relative; min-height:100vh; min-height:100svh;
-    display:grid; place-items:center; padding:48px 20px;
-    background:repeating-linear-gradient(90deg, rgba(27,33,71,.94) 0 14px, rgba(45,61,158,.94) 14px 28px);
-  }
-  .postcard{
-    width:min(760px,100%); padding:12px; background:var(--pc-edge);
-    box-shadow:0 18px 40px rgba(0,0,0,.4);
-    transform:rotate(-1.2deg);
-    animation:land .6s cubic-bezier(.2,.9,.3,1.2) both;
-  }
-  @keyframes land{
-    from{transform:translateY(-60px) rotate(-6deg); opacity:0;}
-    to{transform:rotate(-1.2deg); opacity:1;}
-  }
-  .postcard-inner{
-    display:grid; grid-template-columns:1.1fr 1fr; min-height:340px;
-    background:var(--pc-card); border:6px dotted var(--pc-accent);
-  }
-  .pc-message{padding:32px 28px 28px 32px; border-right:2px solid var(--pc-accent); display:flex; flex-direction:column;}
-  .pc-message h2{
-    font-size:clamp(1.8rem,4.4vw,2.4rem); line-height:1.1; margin:0 0 20px; color:var(--pc-text);
-  }
-  .pc-message p{margin:0; font-size:.95rem; line-height:1.55; color:var(--pc-text); max-width:36ch;}
-  .pc-enter{
-    margin-top:auto; align-self:flex-start;
-    display:inline-block; text-decoration:none; text-align:center;
-    font:500 1rem 'Inter',sans-serif;
-    background:var(--pc-accent); color:var(--pc-card);
-    border:0; border-radius:999px; padding:14px 28px; cursor:pointer;
-    box-shadow:0 4px 0 rgba(0,0,0,.45);
-    transition:transform .12s, box-shadow .12s;
-  }
-  .pc-message .pc-enter{margin-top:26px;}
-  .pc-enter:hover{transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.35);}
-  .pc-enter:active{transform:translateY(4px); box-shadow:none;}
-  .pc-enter:focus-visible{outline:3px solid var(--cream); outline-offset:3px;}
-
-  .pc-stamps{position:relative; height:120px; margin:22px 22px 0 0;}
-  .pc-ticket{
-    position:absolute; right:108px; top:4px; transform:rotate(14deg);
-    width:68px; height:78px; border:4px solid var(--pc-accent); border-radius:6px;
-    display:grid; place-items:center;
-    font:500 1.7rem/1 'Fraunces',serif; color:var(--pc-accent);
-  }
-  .pc-round{position:absolute; right:0; top:0; width:112px; height:112px;}
-  .pc-address{padding:0 22px 18px 0;}
-  .pc-address ul{list-style:none; margin:0; padding:0;}
-  .pc-address li{border-bottom:2px solid var(--pc-accent); padding:18px 0 4px; font-size:.9rem; color:var(--pc-text);}
-  .pc-sign{
-    font-family:'Yellowtail',cursive; font-size:1.5rem; color:var(--cream);
-    margin-top:8px; display:block; transform:rotate(-4deg);
-  }
-  @media (max-width:640px){
-    .postcard-inner{grid-template-columns:1fr;}
-    .pc-message{border-right:0; border-bottom:2px solid var(--pc-accent); padding:26px 22px;}
-    .pc-right{padding-left:22px;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    .postcard{animation:none; transform:none;}
-    .pc-enter{transition:none;}
-  }
 </style>
 </head>
 <body>
 
-<!-- ============ LANDING PAGE ============ -->
-<section class="welcome" id="top" aria-labelledby="welcome-title">
-  <div class="postcard">
-    <div class="postcard-inner">
-
-      <div class="pc-message">
-        <h2 id="welcome-title">Welcome to my corner of the internet</h2>
-        <p>Hi, I'm Ashley. This is my portfolio: writing, content, and design work, plus a blog about books and starting over in Toronto. Take a look around.</p>
-        <a class="pc-enter" href="#home">Enter the site</a>
-      </div>
-
-      <div class="pc-right">
-        <div class="pc-stamps" aria-hidden="true">
-          <div class="pc-ticket">AJ</div>
-          <svg class="pc-round" viewBox="0 0 120 120">
-            <defs><path id="pc-ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-            <circle cx="60" cy="60" r="56" fill="none" stroke="#DCE230" stroke-width="2.5"/>
-            <circle cx="60" cy="60" r="31" fill="none" stroke="#DCE230" stroke-width="1.5"/>
-            <text font-family="Inter, sans-serif" font-size="11" font-weight="500" letter-spacing="1.4" fill="#DCE230">
-              <textPath href="#pc-ring">MADE WITH LOVE · ASHLEY JOHN · TORONTO ·</textPath>
-            </text>
-            <text x="60" y="72" text-anchor="middle" font-family="Fraunces, serif" font-size="34" font-weight="500" fill="#DCE230">A</text>
-          </svg>
-        </div>
-        <div class="pc-address">
-          <ul>
-            <li>The shelf: my work</li>
-            <li>About me</li>
-            <li>From the margins: my blog</li>
-          </ul>
-          <span class="pc-sign">Happy reading.</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
 <nav>
   <div class="wrap">
-    <a href="#home" class="brand">Ashley John</a>
+    <a href="#home" class="brand">ashley john.</a>
     <ul class="navlinks">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#connect">Connect</a></li>
+      <li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#blog">Blog</a></li><li><a href="#connect">Connect</a></li>
+      <li class="hide-sm"><a class="pill" href="#connect">Say hi</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="hero" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow-note">new chapter, Toronto edition</span>
-      <h1>Reader by habit,<br>artist by instinct,<br>maker behind the scenes.</h1>
-      <p class="lede">Hi. I'm Ashley. I build things at the intersection of stories, screens, and the systems that run them. Currently based in Toronto.</p>
-      <div class="hero-ctas">
-        <a href="#work" class="btn btn-primary">See the work</a>
-        <a href="#blog" class="btn btn-ghost">Read the blog</a>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="spines">
-        <div class="spine" style="background:var(--rust); height:210px; width:34px;">writing</div>
-        <div class="spine" style="background:var(--chartreuse); color:var(--ink); height:180px; width:34px;">content</div>
-        <div class="spine" style="background:var(--ink-soft); height:230px; width:34px;">design</div>
-        <div class="spine" style="background:var(--rust); height:150px; width:34px;">reading log</div>
-        <div class="spine" style="background:var(--ink); height:195px; width:34px;">marketing</div>
-      </div>
-    </div>
+  <div class="hero-in">
+    <svg class="deco star s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.3L12 17.4 5.4 21.3l1.8-7.3L1.5 9.1 9 8.5z" fill="#E8B93C" stroke="#B8862A" stroke-width=".8"/></svg><svg class="deco star s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.3L12 17.4 5.4 21.3l1.8-7.3L1.5 9.1 9 8.5z" fill="#E8B93C" stroke="#B8862A" stroke-width=".8"/></svg><div class="deco bub" aria-hidden="true">•••</div><svg class="deco cur" viewBox="0 0 14 20" aria-hidden="true"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h6z" fill="#fff" stroke="#1B2147" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <span class="tag">New chapter · Toronto edition</span>
+    <h1 class="wm" aria-label="ashley john."><span aria-hidden="true"><span class="ls">a</span><span class="lb o cc t1">s</span><span class="ls">h</span><span class="ls o cp">l</span><span class="lb o cy t2">e</span><span class="ls">y</span> <span class="lb o cs t3">j</span><span class="ls">o</span><span class="lb o cw t1">h</span><span class="ls">n</span><span class="lb o cp t2">.</span></span></h1>
+    <p class="hero-sub">reader by habit, artist by instinct, maker behind the scenes.</p>
+    <p class="lede">Hi. I'm Ashley. I build things at the intersection of stories, screens, and the systems that run them. Currently based in Toronto.</p>
+    <div class="ctas"><a href="#work" class="pill dark">See the work</a><a href="#blog" class="pill">Read the blog</a></div>
+    <!-- EDIT: swap these emoji for cut-out PNG photos of your own stuff (books, phone, snacks...) -->
+    <div class="stickers" aria-hidden="true"><span style="--r:-6deg">🌵</span><span style="--r:4deg">📚</span><span style="--r:-3deg">☎️</span><span style="--r:5deg">🧁</span><span style="--r:-4deg">📱</span><span style="--r:6deg">💌</span><span style="--r:-5deg">🎧</span></div>
   </div>
 </section>
-
-<hr class="divider">
+<div class="marquee" aria-hidden="true"><div class="mq"><span>Reader by habit</span><span>Artist by instinct</span><span>Maker behind the scenes</span><span>Welcome to my shelf</span><span>Toronto</span><span>Reader by habit</span><span>Artist by instinct</span><span>Maker behind the scenes</span><span>Welcome to my shelf</span><span>Toronto</span></div></div>
 
 <section class="about" id="about">
-  <div class="wrap about-grid">
-    <div>
-      <h2>A bit of everything, on purpose.</h2>
-      <p>I studied IT Innovation &amp; Design at Conestoga College, spent the last two years learning how to keep calm behind a Tim Hortons counter when there are definitely someone screaming at you for their cappuccino , and used up every golden hour making videos for the sake of good lighting to build a reading community online. I'm now settling into Toronto and figuring out how those three things — technical training, service-industry patience, and a genuine love of stories and content — turn into a career.</p>
-      <p>I'm drawn to the parts of media that happen off-camera: the caption that took four drafts, the edit that makes a video actually land, the little UX decision that makes an app feel right. That's the work I want to keep doing.</p>
-      <ul class="interest-list">
-        <li>Reading &amp; book content</li>
-        <li>Writing</li>
-        <li>Social media strategy</li>
-        <li>Video production</li>
-        <li>UX &amp; design</li>
-        <li>Marketing</li>
-      </ul>
-    </div>
-    <div class="margin-note">
-      <p>"Started this account to talk about books. Ended up learning marketing, editing, and how to actually finish things."</p>
-      <p style="font-size:14px; color:var(--text-soft); font-style:normal;">— from my Notes app, sometime this year</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section class="reading-strip">
+  <span class="env" style="left:6%;top:70px;transform:rotate(-12deg)" aria-hidden="true">✉️</span>
+  <span class="tile" style="right:8%;top:90px;transform:rotate(8deg)" aria-hidden="true">A</span>
+  <span class="tile" style="right:13%;top:130px;transform:rotate(-6deg)" aria-hidden="true">J</span>
   <div class="wrap">
-    <div class="book-block"></div>
-    <div>
-      <div class="label">currently reading</div>
-      <div class="title">Add your current book title here</div>
+    <h2>a bit of everything, on purpose.</h2>
+    <div class="about-grid">
+      <div>
+        <p>I studied IT Innovation &amp; Design at Conestoga College, spent the last two years learning how to keep calm behind a Tim Hortons counter when there are definitely someone screaming at you for their cappuccino , and used up every golden hour making videos for the sake of good lighting to build a reading community online. I'm now settling into Toronto and figuring out how those three things — technical training, service-industry patience, and a genuine love of stories and content — turn into a career.</p>
+        <p>I'm drawn to the parts of media that happen off-camera: the caption that took four drafts, the edit that makes a video actually land, the little UX decision that makes an app feel right. That's the work I want to keep doing.</p>
+        <ul class="chips"><li>Reading &amp; book content</li><li>Writing</li><li>Social media strategy</li><li>Video production</li><li>UX &amp; design</li><li>Marketing</li></ul>
+      </div>
+      <div class="note">
+        <p>"Started this account to talk about books. Ended up learning marketing, editing, and how to actually finish things."</p>
+        <small>— from my Notes app, sometime this year</small>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="reading"><div class="rp"><span aria-hidden="true">📖</span><div><small>currently reading</small><b>Add your current book title here</b></div></div></div>
 
 <section class="work" id="work">
   <div class="wrap">
-    <h2>The shelf</h2>
-    <p class="section-intro">A working shelf of what I've made — writing, content, and design/IT projects. Replace the placeholders below with your actual pieces and links.</p>
-
-    <div class="shelfrow">
-      <details class="category" open>
-        <summary>
-          <div class="cat-left">
-            <span class="cat-tag">01</span>
-            <span class="cat-title">Writing</span>
-            <span class="cat-count">samples</span>
-          </div>
-          <span class="chevron">+</span>
-        </summary>
-        <div class="cat-body">
-          <div class="piece">
-            <h4>Essay or article title</h4>
-            <p>One line on what it's about and where it was published or posted.</p>
-            <a href="#">Read it →</a>
-            <span class="placeholder-flag">Replace with a real writing sample</span>
-          </div>
-          <div class="piece">
-            <h4>Second writing sample</h4>
-            <p>Could be a book review, a personal essay, or a caption series you're proud of.</p>
-            <a href="#">Read it →</a>
-            <span class="placeholder-flag">Replace with a real writing sample</span>
-          </div>
-        </div>
-      </details>
-
-      <details class="category">
-        <summary>
-          <div class="cat-left">
-            <span class="cat-tag">02</span>
-            <span class="cat-title">Content &amp; Social</span>
-            <span class="cat-count">reels, posts, edits</span>
-          </div>
-          <span class="chevron">+</span>
-        </summary>
-        <div class="cat-body">
-          <div class="piece">
-            <h4>Reel or post title</h4>
-            <p>What it was for, the hook you used, and how it performed.</p>
-            <a href="#">View post →</a>
-            <span class="placeholder-flag">Swap in a screenshot + link</span>
-          </div>
-          <div class="piece">
-            <h4>Behind-the-scenes project</h4>
-            <p>A video you helped edit or produce — describe your specific role.</p>
-            <a href="#">Watch →</a>
-            <span class="placeholder-flag">Swap in a screenshot + link</span>
-          </div>
-        </div>
-      </details>
-
-      <details class="category">
-        <summary>
-          <div class="cat-left">
-            <span class="cat-tag">03</span>
-            <span class="cat-title">Design &amp; IT</span>
-            <span class="cat-count">Conestoga projects</span>
-          </div>
-          <span class="chevron">+</span>
-        </summary>
-        <div class="cat-body">
-          <div class="piece">
-            <h4>Capstone or coursework project</h4>
-            <p>What the project solved, tools used, and your specific contribution.</p>
-            <a href="#">View project →</a>
-            <span class="placeholder-flag">Pull this from your Conestoga coursework</span>
-          </div>
-          <div class="piece">
-            <h4>Second project</h4>
-            <p>An app, prototype, or design exercise from your diploma.</p>
-            <a href="#">View project →</a>
-            <span class="placeholder-flag">Pull this from your Conestoga coursework</span>
-          </div>
-        </div>
-      </details>
-    </div>
+    <h2>Browse the latest from the shelf</h2>
+    <p class="sub">Writing, content, and design/IT projects. Swipe through, and replace the placeholders with your real pieces and links.</p>
   </div>
+  <div class="rail" id="rail"><article class="wc pk"><small>01 · Writing</small><h3>Essay or article title</h3><p>One line on what it's about and where it was published or posted.</p><em>Replace with a real writing sample</em><a href="#">Read it here →</a></article><article class="wc sk"><small>01 · Writing</small><h3>Second writing sample</h3><p>Could be a book review, a personal essay, or a caption series you're proud of.</p><em>Replace with a real writing sample</em><a href="#">Read it here →</a></article><article class="wc yl"><small>02 · Content &amp; Social</small><h3>Reel or post title</h3><p>What it was for, the hook you used, and how it performed.</p><em>Swap in a screenshot + link</em><a href="#">View post →</a></article><article class="wc lm"><small>02 · Content &amp; Social</small><h3>Behind-the-scenes project</h3><p>A video you helped edit or produce — describe your specific role.</p><em>Swap in a screenshot + link</em><a href="#">Watch it →</a></article><article class="wc pk"><small>03 · Design &amp; IT</small><h3>Capstone or coursework project</h3><p>What the project solved, tools used, and your specific contribution.</p><em>Pull this from your Conestoga coursework</em><a href="#">View project →</a></article><article class="wc sk"><small>03 · Design &amp; IT</small><h3>Second project</h3><p>An app, prototype, or design exercise from your diploma.</p><em>Pull this from your Conestoga coursework</em><a href="#">View project →</a></article></div>
+  <div class="arrows"><button type="button" data-dir="-1" aria-label="Previous">←</button><button type="button" data-dir="1" aria-label="Next">→</button></div>
 </section>
-
-<hr class="divider">
 
 <section class="blog" id="blog">
   <div class="wrap">
-    <h2>From the margins</h2>
-    <p class="section-intro" style="color:var(--text-soft); max-width:52ch; margin-top:10px; font-size:15.5px;">Notes on books, content, and building a life in a new city. Add your posts here as you write them.</p>
-    <div class="postlist">
-      <a class="postrow" href="#">
-        <span class="post-title">Your first blog post title goes here</span>
-        <span class="post-meta">Draft</span>
-      </a>
-      <a class="postrow" href="#">
-        <span class="post-title">A second post idea, maybe about the move to Toronto</span>
-        <span class="post-meta">Draft</span>
-      </a>
-      <a class="postrow" href="#">
-        <span class="post-title">Something you learned growing an audience to 5k</span>
-        <span class="post-meta">Draft</span>
-      </a>
+    <h2>from the margins</h2>
+    <p class="sub">Notes on books, content, and building a life in a new city. Add your posts here as you write them.</p>
+    <div class="posts">
+      <a class="post" href="#"><b>Your first blog post title goes here</b><i>Draft</i></a>
+      <a class="post" href="#"><b>A second post idea, maybe about the move to Toronto</b><i>Draft</i></a>
+      <a class="post" href="#"><b>Something you learned growing an audience to 5k</b><i>Draft</i></a>
     </div>
   </div>
 </section>
+<div class="marquee" aria-hidden="true"><div class="mq"><span>Open to full-time roles</span><span>Social</span><span>Content</span><span>Marketing</span><span>Always happy to talk books</span><span>Open to full-time roles</span><span>Social</span><span>Content</span><span>Marketing</span><span>Always happy to talk books</span></div></div>
 
 <footer id="connect">
+  <svg class="deco fcur" viewBox="0 0 14 20" aria-hidden="true"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h6z" fill="#fff" stroke="#1B2147" stroke-width="1.4" stroke-linejoin="round"/></svg>
   <div class="wrap">
-    <h2>Let's talk shop.</h2>
-    <p style="max-width:44ch; color:rgba(251,247,239,0.75); margin-top:16px;">Open to full-time roles in social, content, or marketing — and always happy to talk books. Reach out any of these ways.</p>
-    <div class="connect-links">
-      <a href="mailto:your.email@example.com">your.email@example.com</a>
-      <a href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener">Instagram — @ashleyjohn</a>
-      <a href="https://tiktok.com/@ashleyjohn" target="_blank" rel="noopener">TikTok — @ashleyjohn</a>
+    <div class="talk">
+      <h2>let's talk shop.</h2>
+      <p>Open to full-time roles in social, content, or marketing — and always happy to talk books. Reach out any of these ways.</p>
+      <div class="links">
+        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <a href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener">Instagram — @ashleyjohn</a>
+        <a href="https://tiktok.com/@ashleyjohn" target="_blank" rel="noopener">TikTok — @ashleyjohn</a>
+      </div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 Ashley John. Built in Toronto.</span>
-      <span>Update the handles and email above with your real links.</span>
+    <!-- EDIT: replace with screenshots of your best reels -->
+    <div class="reels"><a class="reel pk" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 01</a><a class="reel sk" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 02</a><a class="reel yl" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 03</a><a class="reel lm" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 04</a><a class="reel pk" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 05</a><a class="reel sk" href="https://instagram.com/ashleyjohn" target="_blank" rel="noopener"><span>▶</span>reel 06</a></div>
+    <div class="cols">
+      <div><p>Reader, writer, maker of things.</p></div>
+      <div><h4>Explore</h4><a href="#work">Work</a><a href="#about">About</a><a href="#blog">Blog</a></div>
+      <div><h4>More</h4><a href="mailto:your.email@example.com">Email</a><a href="https://instagram.com/ashleyjohn">Instagram</a><a href="https://tiktok.com/@ashleyjohn">TikTok</a></div>
     </div>
+    <div class="fm" aria-hidden="true"><span class="ls">a</span><span class="lb o cc t1">s</span><span class="ls">h</span><span class="ls o cp">l</span><span class="lb o cy t2">e</span><span class="ls">y</span> <span class="lb o cs t3">j</span><span class="ls">o</span><span class="lb o cw t1">h</span><span class="ls">n</span><span class="lb o cp t2">.</span></div>
+    <div class="legal"><span>© 2026 Ashley John · Built in Toronto</span><span>Update the handles and email with your real links</span></div>
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.mq').forEach(t=>{t.innerHTML+=t.innerHTML;});
+  const rail=document.getElementById('rail');
+  document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>rail.scrollBy({left:b.dataset.dir*300,behavior:'smooth'})));
+</script>
 </body>
 </html>
