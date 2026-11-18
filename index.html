@@ -6,9 +6,9 @@
 <title>Ashley John — Reader, Writer, Maker of Things</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#FFFDF6;--ink:#1B2147;--ink-soft:#2E3566;--chartreuse:#DCE230;--olive:#6F7405;--pink:#F7C1CF;--yellow:#FBEE9C;--sky:#BFE3EC;--lime:#DDE79B;--cream:#FBFCEF;--text:#1D2033;--text-soft:#4B5068;--line:rgba(27,33,71,.16);--serif:'Fraunces',serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace;--bubble:'Bagel Fat One',cursive}
+  :root{--paper:#FFFDF6;--ink:#1B2147;--ink-soft:#2E3566;--chartreuse:#DCE230;--olive:#6F7405;--pink:#F7C1CF;--yellow:#FBEE9C;--sky:#BFE3EC;--lime:#DDE79B;--cream:#FBFCEF;--text:#1D2033;--text-soft:#4B5068;--line:rgba(27,33,71,.16);--serif:'Fraunces',serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace;--script:'Playball',cursive}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
   body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
   h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0}
@@ -18,7 +18,7 @@
   /* NAV */
   nav{position:sticky;top:0;z-index:50;background:rgba(255,253,246,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-  .brand{font:400 24px var(--bubble);color:var(--ink);text-decoration:none}
+  .brand{font:400 30px var(--script);color:var(--ink);text-decoration:none}
   .navlinks{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0}
   .navlinks a:not(.pill){font:11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
   .navlinks a:not(.pill):hover{text-decoration:underline;text-underline-offset:4px}
@@ -27,24 +27,14 @@
   @media(max-width:640px){.navlinks{gap:14px}.navlinks .hide-sm{display:none}}
 
   /* HERO */
-  .hero{position:relative;overflow:hidden;padding:64px 0 0;text-align:center;background:linear-gradient(180deg,#C9E7EE,#E3F1EB 55%,var(--paper))}
+  .hero{position:relative;overflow:hidden;padding:64px 0 76px;text-align:center;background:var(--paper)}
   .hero-in{position:relative;max-width:980px;margin:0 auto;padding:0 20px}
-  .tag{display:inline-block;transform:rotate(-3deg);background:var(--pink);border:1.5px solid var(--ink);font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;box-shadow:3px 3px 0 var(--ink)}
-  .wm{font-size:clamp(58px,13vw,168px);line-height:.95;letter-spacing:-.03em;margin:24px 0 0;color:var(--ink)}
-  .wm span{display:inline-block}
-  .ls{font-family:var(--serif);font-weight:800}.lb{font-family:var(--bubble);font-weight:400}
-  .o{-webkit-text-stroke:.05em var(--ink);paint-order:stroke fill}
-  .cc{color:var(--chartreuse)}.cy{color:var(--yellow)}.cs{color:var(--sky)}.cp{color:var(--pink)}.cw{color:#fff}
-  .t1{transform:rotate(-5deg)}.t2{transform:rotate(5deg)}.t3{transform:rotate(-3deg) translateY(.03em)}
+  .tag{display:inline-block;cursor:pointer;color:var(--ink);transform:rotate(-3deg);background:var(--pink);border:1.5px solid var(--ink);font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 18px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+  .tag:hover{transform:rotate(1deg) translateY(-2px);box-shadow:5px 5px 0 var(--ink)}.tag:active{transform:rotate(-3deg) translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}.tag:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+  .wm{font:400 clamp(64px,14vw,176px)/1.1 var(--script);margin:26px 0 0;color:var(--sky);-webkit-text-stroke:.07em var(--ink);paint-order:stroke fill;letter-spacing:.01em}
   .hero-sub{font:italic 500 clamp(19px,2.6vw,26px)/1.3 var(--serif);color:var(--ink);margin:22px auto 0;max-width:30ch}
   .lede{max-width:46ch;margin:14px auto 0;font-size:15px;color:var(--text-soft)}
   .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .stickers{display:flex;justify-content:center;align-items:flex-end;gap:clamp(2px,1.6vw,20px);margin-top:38px;line-height:1}
-  .stickers span{font-size:clamp(44px,9vw,108px);transform:rotate(var(--r));filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 5px 6px rgba(27,33,71,.25))}
-  .deco{position:absolute;pointer-events:none}.star{width:clamp(34px,5vw,58px)}.s1{left:1%;top:34%;transform:rotate(-14deg)}.s2{right:4%;top:6%;width:26px}
-  .bub{right:5%;top:27%;background:#fff;border:1.5px solid var(--ink);border-radius:14px;padding:3px 12px;font-size:18px;letter-spacing:2px;transform:rotate(6deg)}
-  .cur{right:12%;top:60%;width:32px}.s1,.bub{animation:bob 4s ease-in-out infinite}@keyframes bob{50%{translate:0 -9px}}
-  @media(max-width:700px){.s1,.cur{display:none}}
 
   /* TICKERS */
   .marquee{background:#F3EEDC;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);overflow:hidden;white-space:nowrap;padding:12px 0;font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
@@ -63,10 +53,10 @@
   .note::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:24px;margin-left:-45px;background:rgba(247,193,207,.85);transform:rotate(-3deg)}
   .note p{font:italic 500 19px/1.4 var(--serif);color:var(--ink);margin:0 0 14px}.note small{font:12px var(--mono);color:var(--text-soft)}
   .tile{position:absolute;width:44px;height:44px;display:grid;place-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:6px;font:700 22px var(--sans);color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
-  .env{position:absolute;font-size:44px}@media(max-width:800px){.tile,.env{display:none}}
+  @media(max-width:800px){.tile{display:none}}
   .reading{padding:0 20px 80px}
-  .rp{display:flex;align-items:center;gap:16px;max-width:520px;margin:0 auto;background:var(--chartreuse);border:1.5px solid var(--ink);border-radius:999px;padding:14px 28px;box-shadow:0 5px 0 var(--ink)}
-  .rp small{display:block;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}.rp b{font:500 18px var(--serif);color:var(--ink)}.rp span{font-size:28px}
+  .rp{display:flex;align-items:center;gap:16px;max-width:520px;margin:0 auto;justify-content:center;text-align:center;background:var(--chartreuse);border:1.5px solid var(--ink);border-radius:999px;padding:14px 28px;box-shadow:0 5px 0 var(--ink)}
+  .rp small{display:block;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}.rp b{font:500 18px var(--serif);color:var(--ink)}
 
   /* WORK */
   .work{padding:80px 0 70px;text-align:center;background-color:var(--paper);background-image:linear-gradient(rgba(27,33,71,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,33,71,.06) 1px,transparent 1px);background-size:28px 28px;border-top:1.5px solid var(--line)}
@@ -101,11 +91,15 @@
   .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}@media(max-width:700px){.cols{grid-template-columns:1fr 1fr}.cols>div:first-child{grid-column:1/-1}}
   .cols h4{font:500 15px var(--sans);margin:0 0 10px}.cols a{display:block;font:12px/2 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:rgba(251,252,239,.8)}.cols a:hover{color:var(--chartreuse)}
   .cols p{margin:0;max-width:30ch;font:19px var(--serif)}
-  .fm{font-size:clamp(52px,12.5vw,168px);line-height:1;letter-spacing:-.03em;margin:48px 0 20px;text-align:center}
-  .fm span{display:inline-block}.fm .ls{color:var(--cream)}.fm .o{-webkit-text-stroke-color:var(--chartreuse)}
-  .fcur{right:6%;bottom:64px;width:44px}
+  .fm{font:400 clamp(60px,13vw,176px)/1.1 var(--script);margin:48px 0 20px;text-align:center;color:var(--sky);-webkit-text-stroke:.07em var(--chartreuse);paint-order:stroke fill}
   .legal{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(251,252,239,.5);border-top:1px solid rgba(251,252,239,.15);padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq,.s1,.bub{animation:none}}
+    .modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(27,33,71,.55);backdrop-filter:blur(3px)}.modal[hidden]{display:none}
+  .modal-card{width:min(440px,100%);background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:30px 28px 26px;box-shadow:8px 8px 0 var(--chartreuse);text-align:center;animation:pop .35s cubic-bezier(.2,1.3,.4,1)}
+  @keyframes pop{from{transform:scale(.85) rotate(-3deg);opacity:0}}
+  .modal-card small{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--pink);border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px}
+  .fact{font:500 clamp(22px,4vw,28px)/1.25 var(--serif);color:var(--ink);margin:22px 0 26px;min-height:5.5em;display:grid;place-items:center}
+  .modal-actions{display:flex;gap:10px;justify-content:center}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq,.modal-card{animation:none}}
 
 </style>
 </head>
@@ -113,7 +107,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#home" class="brand">ashley john.</a>
+    <a href="#home" class="brand">Ashley John</a>
     <ul class="navlinks">
       <li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#blog">Blog</a></li><li><a href="#connect">Connect</a></li>
       <li class="hide-sm"><a class="pill" href="#connect">Say hi</a></li>
@@ -123,20 +117,16 @@
 
 <section class="hero" id="home">
   <div class="hero-in">
-    <svg class="deco star s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.3L12 17.4 5.4 21.3l1.8-7.3L1.5 9.1 9 8.5z" fill="#E8B93C" stroke="#B8862A" stroke-width=".8"/></svg><svg class="deco star s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.3L12 17.4 5.4 21.3l1.8-7.3L1.5 9.1 9 8.5z" fill="#E8B93C" stroke="#B8862A" stroke-width=".8"/></svg><div class="deco bub" aria-hidden="true">•••</div><svg class="deco cur" viewBox="0 0 14 20" aria-hidden="true"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h6z" fill="#fff" stroke="#1B2147" stroke-width="1.4" stroke-linejoin="round"/></svg>
-    <span class="tag">reader by habit, artist by instinct, maker behind the scenes</span>
-    <h1 class="wm" aria-label="ashley john."><span aria-hidden="true"><span class="ls">a</span><span class="lb o cc t1">s</span><span class="ls">h</span><span class="ls o cp">l</span><span class="lb o cy t2">e</span><span class="ls">y</span> <span class="lb o cs t3">j</span><span class="ls">o</span><span class="lb o cw t1">h</span><span class="ls">n</span><span class="lb o cp t2">.</span></span></h1>
-    <p class="hero-sub">content creator, software developer, brand designer</p>
+    <button class="tag" id="funbtn" type="button" aria-haspopup="dialog">psst, press me</button>
+    <h1 class="wm">Ashley John</h1>
+    <p class="hero-sub">reader by habit, artist by instinct, maker behind the scenes.</p>
     <p class="lede">Hi. I'm Ashley. I build things at the intersection of stories, screens, and the systems that run them. Currently based in Toronto.</p>
     <div class="ctas"><a href="#work" class="pill dark">See the work</a><a href="#blog" class="pill">Read the blog</a></div>
-    <!-- EDIT: swap these emoji for cut-out PNG photos of your own stuff (books, phone, snacks...) -->
-    <div class="stickers" aria-hidden="true"><span style="--r:-6deg">🌵</span><span style="--r:4deg">📚</span><span style="--r:-3deg">☎️</span><span style="--r:5deg">🧁</span><span style="--r:-4deg">📱</span><span style="--r:6deg">💌</span><span style="--r:-5deg">🎧</span></div>
   </div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="mq"><span>Reader by habit</span><span>Artist by instinct</span><span>Maker behind the scenes</span><span>Welcome to my shelf</span><span>Toronto</span><span>Reader by habit</span><span>Artist by instinct</span><span>Maker behind the scenes</span><span>Welcome to my shelf</span><span>Toronto</span></div></div>
 
 <section class="about" id="about">
-  <span class="env" style="left:6%;top:70px;transform:rotate(-12deg)" aria-hidden="true">✉️</span>
   <span class="tile" style="right:8%;top:90px;transform:rotate(8deg)" aria-hidden="true">A</span>
   <span class="tile" style="right:13%;top:130px;transform:rotate(-6deg)" aria-hidden="true">J</span>
   <div class="wrap">
@@ -155,7 +145,7 @@
   </div>
 </section>
 
-<div class="reading"><div class="rp"><span aria-hidden="true">📖</span><div><small>currently reading</small><b>Add your current book title here</b></div></div></div>
+<div class="reading"><div class="rp"><div><small>currently reading</small><b>Add your current book title here</b></div></div></div>
 
 <section class="work" id="work">
   <div class="wrap">
@@ -180,7 +170,6 @@
 <div class="marquee" aria-hidden="true"><div class="mq"><span>Open to full-time roles</span><span>Social</span><span>Content</span><span>Marketing</span><span>Always happy to talk books</span><span>Open to full-time roles</span><span>Social</span><span>Content</span><span>Marketing</span><span>Always happy to talk books</span></div></div>
 
 <footer id="connect">
-  <svg class="deco fcur" viewBox="0 0 14 20" aria-hidden="true"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h6z" fill="#fff" stroke="#1B2147" stroke-width="1.4" stroke-linejoin="round"/></svg>
   <div class="wrap">
     <div class="talk">
       <h2>let's talk shop.</h2>
@@ -198,15 +187,46 @@
       <div><h4>Explore</h4><a href="#work">Work</a><a href="#about">About</a><a href="#blog">Blog</a></div>
       <div><h4>More</h4><a href="mailto:your.email@example.com">Email</a><a href="https://instagram.com/ashleyjohn">Instagram</a><a href="https://tiktok.com/@ashleyjohn">TikTok</a></div>
     </div>
-    <div class="fm" aria-hidden="true"><span class="ls">a</span><span class="lb o cc t1">s</span><span class="ls">h</span><span class="ls o cp">l</span><span class="lb o cy t2">e</span><span class="ls">y</span> <span class="lb o cs t3">j</span><span class="ls">o</span><span class="lb o cw t1">h</span><span class="ls">n</span><span class="lb o cp t2">.</span></div>
+    <div class="fm" aria-hidden="true">Ashley John</div>
     <div class="legal"><span>© 2026 Ashley John · Built in Toronto</span><span>Update the handles and email with your real links</span></div>
   </div>
 </footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="fact-label">
+    <small id="fact-label">Fun fact <span id="fact-n">1</span> of <span id="fact-total"></span></small>
+    <p class="fact" id="fact"></p>
+    <div class="modal-actions"><button class="pill dark" id="next" type="button">Another one</button><button class="pill" id="close" type="button">Close</button></div>
+  </div>
+</div>
 
 <script>
   document.querySelectorAll('.mq').forEach(t=>{t.innerHTML+=t.innerHTML;});
   const rail=document.getElementById('rail');
   document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>rail.scrollBy({left:b.dataset.dir*300,behavior:'smooth'})));
+  // EDIT: add, remove or rewrite the fun facts shown in the pop-up
+  const facts=[
+    "I have chased golden hour all over town just to film a book video. Good lighting is a personality trait.",
+    "I kept a 100% guest satisfaction score in my region while serving cappuccinos at peak rush. Calm under pressure is a skill.",
+    "I started an account to talk about books and accidentally learned marketing, editing, and how to actually finish things.",
+    "My best skill is knowing when a caption needs a fourth draft.",
+    "I helped grow online sales by 23%+ by turning data into prettier, smarter content.",
+    "Ask me for a book recommendation. I will absolutely have one."
+  ];
+  const modal=document.getElementById('modal'),fact=document.getElementById('fact'),num=document.getElementById('fact-n'),funbtn=document.getElementById('funbtn');
+  document.getElementById('fact-total').textContent=facts.length;
+  let order=[],idx=0;
+  function show(){
+    fact.textContent=facts[order[idx]]; num.textContent=idx+1;
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches) fact.animate([{transform:'scale(.9)',opacity:0},{transform:'none',opacity:1}],{duration:250});
+  }
+  function openModal(){order=facts.map((_,k)=>k).sort(()=>Math.random()-.5);idx=0;modal.hidden=false;document.body.style.overflow='hidden';show();document.getElementById('next').focus();}
+  function closeModal(){modal.hidden=true;document.body.style.overflow='';funbtn.focus();}
+  funbtn.addEventListener('click',openModal);
+  document.getElementById('next').addEventListener('click',()=>{idx=(idx+1)%order.length;show();});
+  document.getElementById('close').addEventListener('click',closeModal);
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal();});
 </script>
 </body>
 </html>
