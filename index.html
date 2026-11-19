@@ -6,9 +6,9 @@
 <title>Ashley John — Reader, Writer, Maker of Things</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#FFFDF6;--ink:#1B2147;--ink-soft:#2E3566;--chartreuse:#DCE230;--olive:#6F7405;--pink:#F7C1CF;--yellow:#FBEE9C;--sky:#BFE3EC;--lime:#DDE79B;--cream:#FBFCEF;--text:#1D2033;--text-soft:#4B5068;--line:rgba(27,33,71,.16);--serif:'Fraunces',serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace;--script:'Playball',cursive}
+  :root{--paper:#FFFDF6;--ink:#1B2147;--ink-soft:#2E3566;--chartreuse:#DCE230;--thread:#B3363A;--olive:#6F7405;--pink:#F7C1CF;--yellow:#FBEE9C;--sky:#BFE3EC;--lime:#DDE79B;--cream:#FBFCEF;--text:#1D2033;--text-soft:#4B5068;--line:rgba(27,33,71,.16);--serif:'Fraunces',serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace;--script:'Mrs Saint Delafield',cursive}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
   body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
   h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0}
@@ -18,7 +18,7 @@
   /* NAV */
   nav{position:sticky;top:0;z-index:50;background:rgba(255,253,246,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-  .brand{font:400 30px var(--script);color:var(--ink);text-decoration:none}
+  .brand{font:11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
   .navlinks{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0}
   .navlinks a:not(.pill){font:11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
   .navlinks a:not(.pill):hover{text-decoration:underline;text-underline-offset:4px}
@@ -27,14 +27,14 @@
   @media(max-width:640px){.navlinks{gap:14px}.navlinks .hide-sm{display:none}}
 
   /* HERO */
-  .hero{position:relative;overflow:hidden;padding:64px 0 76px;text-align:center;background:var(--paper)}
+  .hero{position:relative;overflow:hidden;padding:88px 0 96px;text-align:center;background:var(--paper)}
+  .big{font:400 clamp(40px,6.6vw,86px)/1.04 'Instrument Serif',Georgia,serif;letter-spacing:-.025em;color:var(--ink);margin:0 auto;max-width:22ch;text-wrap:balance}
+  .big em{font-style:italic}
+  .hero-copy{margin:30px auto 0;font:500 15px/1.55 var(--sans);color:var(--ink)}
+  @media(min-width:640px){.hero-copy{white-space:nowrap}}
+  .keys{margin:16px 0 0;font:11.5px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase}.keys b{font-weight:400}.keys i{font-style:normal;margin:0 12px;opacity:.45}
   .hero-in{position:relative;max-width:980px;margin:0 auto;padding:0 20px}
-  .tag{display:inline-block;cursor:pointer;color:var(--ink);transform:rotate(-3deg);background:var(--pink);border:1.5px solid var(--ink);font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 18px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
-  .tag:hover{transform:rotate(1deg) translateY(-2px);box-shadow:5px 5px 0 var(--ink)}.tag:active{transform:rotate(-3deg) translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}.tag:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-  .wm{font:400 clamp(64px,14vw,176px)/1.1 var(--script);margin:26px 0 0;color:var(--sky);-webkit-text-stroke:.07em var(--ink);paint-order:stroke fill;letter-spacing:.01em}
-  .hero-sub{font:italic 500 clamp(19px,2.6vw,26px)/1.3 var(--serif);color:var(--ink);margin:22px auto 0;max-width:30ch}
-  .lede{max-width:46ch;margin:14px auto 0;font-size:15px;color:var(--text-soft)}
-  .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
 
   /* TICKERS */
   .marquee{background:#F3EEDC;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);overflow:hidden;white-space:nowrap;padding:12px 0;font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
@@ -91,15 +91,9 @@
   .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}@media(max-width:700px){.cols{grid-template-columns:1fr 1fr}.cols>div:first-child{grid-column:1/-1}}
   .cols h4{font:500 15px var(--sans);margin:0 0 10px}.cols a{display:block;font:12px/2 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:rgba(251,252,239,.8)}.cols a:hover{color:var(--chartreuse)}
   .cols p{margin:0;max-width:30ch;font:19px var(--serif)}
-  .fm{font:400 clamp(60px,13vw,176px)/1.1 var(--script);margin:48px 0 20px;text-align:center;color:var(--sky);-webkit-text-stroke:.07em var(--chartreuse);paint-order:stroke fill}
+  .fm{font:400 clamp(60px,13vw,176px)/1.1 var(--script);margin:48px 0 20px;text-align:center;color:#F08A86;-webkit-text-stroke:.6px #F08A86}
   .legal{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(251,252,239,.5);border-top:1px solid rgba(251,252,239,.15);padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-    .modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(27,33,71,.55);backdrop-filter:blur(3px)}.modal[hidden]{display:none}
-  .modal-card{width:min(440px,100%);background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:30px 28px 26px;box-shadow:8px 8px 0 var(--chartreuse);text-align:center;animation:pop .35s cubic-bezier(.2,1.3,.4,1)}
-  @keyframes pop{from{transform:scale(.85) rotate(-3deg);opacity:0}}
-  .modal-card small{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--pink);border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px}
-  .fact{font:500 clamp(22px,4vw,28px)/1.25 var(--serif);color:var(--ink);margin:22px 0 26px;min-height:5.5em;display:grid;place-items:center}
-  .modal-actions{display:flex;gap:10px;justify-content:center}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq,.modal-card{animation:none}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq{animation:none}}
 
 </style>
 </head>
@@ -117,10 +111,9 @@
 
 <section class="hero" id="home">
   <div class="hero-in">
-    <button class="tag" id="funbtn" type="button" aria-haspopup="dialog">psst, press me</button>
-    <h1 class="wm">what's in ashley's portfolio?</h1>
-    <p class="hero-sub">reader by habit, artist by instinct, maker behind the scenes.</p>
-    <p class="lede">Hi. I'm Ashley. I build things at the intersection of stories, screens, and the systems that run them. Currently based in Toronto.</p>
+    <h1 class="big">hi. i am ashley.<br>Part designer, part developer, <em>all brand.</em></h1>
+    <p class="hero-copy">I make the fun stuff real, across entertainment, media, and culture.</p>
+    <p class="keys"><b>Brand identities</b><i>|</i><b>Campaigns</b><i>|</i><b>Production</b></p>
     <div class="ctas"><a href="#work" class="pill dark">See the work</a><a href="#blog" class="pill">Read the blog</a></div>
   </div>
 </section>
@@ -192,41 +185,10 @@
   </div>
 </footer>
 
-<div class="modal" id="modal" hidden>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="fact-label">
-    <small id="fact-label">Fun fact <span id="fact-n">1</span> of <span id="fact-total"></span></small>
-    <p class="fact" id="fact"></p>
-    <div class="modal-actions"><button class="pill dark" id="next" type="button">Another one</button><button class="pill" id="close" type="button">Close</button></div>
-  </div>
-</div>
-
 <script>
   document.querySelectorAll('.mq').forEach(t=>{t.innerHTML+=t.innerHTML;});
   const rail=document.getElementById('rail');
   document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>rail.scrollBy({left:b.dataset.dir*300,behavior:'smooth'})));
-  // EDIT: add, remove or rewrite the fun facts shown in the pop-up
-  const facts=[
-    "I have chased golden hour all over town just to film a book video. Good lighting is a personality trait.",
-    "I kept a 100% guest satisfaction score in my region while serving cappuccinos at peak rush. Calm under pressure is a skill.",
-    "I started an account to talk about books and accidentally learned marketing, editing, and how to actually finish things.",
-    "My best skill is knowing when a caption needs a fourth draft.",
-    "I helped grow online sales by 23%+ by turning data into prettier, smarter content.",
-    "Ask me for a book recommendation. I will absolutely have one."
-  ];
-  const modal=document.getElementById('modal'),fact=document.getElementById('fact'),num=document.getElementById('fact-n'),funbtn=document.getElementById('funbtn');
-  document.getElementById('fact-total').textContent=facts.length;
-  let order=[],idx=0;
-  function show(){
-    fact.textContent=facts[order[idx]]; num.textContent=idx+1;
-    if(!matchMedia('(prefers-reduced-motion:reduce)').matches) fact.animate([{transform:'scale(.9)',opacity:0},{transform:'none',opacity:1}],{duration:250});
-  }
-  function openModal(){order=facts.map((_,k)=>k).sort(()=>Math.random()-.5);idx=0;modal.hidden=false;document.body.style.overflow='hidden';show();document.getElementById('next').focus();}
-  function closeModal(){modal.hidden=true;document.body.style.overflow='';funbtn.focus();}
-  funbtn.addEventListener('click',openModal);
-  document.getElementById('next').addEventListener('click',()=>{idx=(idx+1)%order.length;show();});
-  document.getElementById('close').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal();});
 </script>
 </body>
 </html>
